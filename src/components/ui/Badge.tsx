@@ -7,13 +7,13 @@ interface BadgeProps {
 }
 
 const variantClasses: Record<string, string> = {
-  default: 'bg-slate-100 text-slate-700',
-  success: 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200',
-  warning: 'bg-amber-50 text-amber-700 ring-1 ring-amber-200',
-  error: 'bg-red-50 text-red-700 ring-1 ring-red-200',
-  info: 'bg-blue-50 text-blue-700 ring-1 ring-blue-200',
-  purple: 'bg-indigo-50 text-indigo-700 ring-1 ring-indigo-200',
-  gray: 'bg-slate-100 text-slate-500 ring-1 ring-slate-200',
+  default: 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300',
+  success: 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-950 dark:text-emerald-400 dark:ring-emerald-800',
+  warning: 'bg-amber-50 text-amber-700 ring-1 ring-amber-200 dark:bg-amber-950 dark:text-amber-400 dark:ring-amber-800',
+  error: 'bg-red-50 text-red-700 ring-1 ring-red-200 dark:bg-red-950 dark:text-red-400 dark:ring-red-800',
+  info: 'bg-blue-50 text-blue-700 ring-1 ring-blue-200 dark:bg-blue-950 dark:text-blue-400 dark:ring-blue-800',
+  purple: 'bg-indigo-50 text-indigo-700 ring-1 ring-indigo-200 dark:bg-indigo-950 dark:text-indigo-400 dark:ring-indigo-800',
+  gray: 'bg-slate-100 text-slate-500 ring-1 ring-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:ring-slate-600',
 };
 
 export const Badge: React.FC<BadgeProps> = ({ label, variant = 'default', size = 'sm' }) => {

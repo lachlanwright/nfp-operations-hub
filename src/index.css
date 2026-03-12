@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 * {
   box-sizing: border-box;
 }
@@ -12,6 +14,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.dark body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
 .scrollbar-thin::-webkit-scrollbar { width: 4px; }
 .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
 .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.dark .scrollbar-thin::-webkit-scrollbar-track { background: #1e293b; }
+.dark .scrollbar-thin::-webkit-scrollbar-thumb { background: #475569; }

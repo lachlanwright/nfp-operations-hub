@@ -36,8 +36,8 @@ export const DashboardPage: React.FC = () => {
     <div className="p-6 space-y-6 max-w-7xl mx-auto">
       {/* Header */}
       <div>
-        <h2 className="text-xl font-bold text-slate-900">Operations Dashboard</h2>
-        <p className="text-sm text-slate-500 mt-0.5">Real-time view across all connected systems · Updated just now</p>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">Operations Dashboard</h2>
+        <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Real-time view across all connected systems · Updated just now</p>
       </div>
 
       {/* KPI row */}
@@ -56,7 +56,7 @@ export const DashboardPage: React.FC = () => {
               title="Member Intake Workflow"
               subtitle="Current stage distribution across 11 active applications"
               action={
-                <span className="text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded-full px-2.5 py-1 font-medium flex items-center gap-1">
+                <span className="text-xs text-amber-600 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-full px-2.5 py-1 font-medium flex items-center gap-1">
                   <AlertCircle size={12} /> 3 bottlenecks
                 </span>
               }
@@ -79,7 +79,7 @@ export const DashboardPage: React.FC = () => {
               </ResponsiveContainer>
               <div className="mt-2 flex flex-wrap gap-2">
                 {workflowFunnel.map(s => (
-                  <div key={s.stage} className="flex items-center gap-1.5 text-xs text-slate-500">
+                  <div key={s.stage} className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
                     <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: s.color }} />
                     {s.stage}
                   </div>
@@ -93,19 +93,19 @@ export const DashboardPage: React.FC = () => {
         <div className="col-span-2">
           <Card className="h-full flex flex-col">
             <CardHeader title="Recent Activity" subtitle="Today's operational events" />
-            <div className="flex-1 overflow-y-auto divide-y divide-slate-50">
+            <div className="flex-1 overflow-y-auto divide-y divide-slate-50 dark:divide-slate-700">
               {activityFeed.map(item => (
-                <div key={item.id} className="flex items-start gap-3 px-4 py-3 hover:bg-slate-50 transition-colors">
-                  <div className="mt-0.5 w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                <div key={item.id} className="flex items-start gap-3 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                  <div className="mt-0.5 w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center shrink-0">
                     {activityIcon[item.type]}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs text-slate-700 leading-snug">{item.message}</p>
+                    <p className="text-xs text-slate-700 dark:text-slate-200 leading-snug">{item.message}</p>
                     <div className="flex items-center gap-2 mt-1">
-                      <Clock size={10} className="text-slate-400" />
-                      <span className="text-xs text-slate-400">{item.timestamp}</span>
+                      <Clock size={10} className="text-slate-400 dark:text-slate-500" />
+                      <span className="text-xs text-slate-400 dark:text-slate-500">{item.timestamp}</span>
                       {item.system && (
-                        <span className="text-xs text-slate-400 bg-slate-100 rounded px-1.5 py-0.5">{item.system}</span>
+                        <span className="text-xs text-slate-400 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 rounded px-1.5 py-0.5">{item.system}</span>
                       )}
                     </div>
                   </div>
@@ -127,34 +127,34 @@ export const DashboardPage: React.FC = () => {
             </button>
           }
         />
-        <div className="divide-y divide-slate-50">
+        <div className="divide-y divide-slate-50 dark:divide-slate-700">
           {systems.map(sys => (
-            <div key={sys.id} className="flex items-center gap-4 px-5 py-3.5 hover:bg-slate-50 transition-colors">
+            <div key={sys.id} className="flex items-center gap-4 px-5 py-3.5 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
               <StatusDot status={sys.status} size="md" />
               <div className="w-48 min-w-0">
-                <p className="text-sm font-medium text-slate-800 truncate">{sys.name}</p>
-                <p className="text-xs text-slate-400">{sys.type}</p>
+                <p className="text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{sys.name}</p>
+                <p className="text-xs text-slate-400 dark:text-slate-500">{sys.type}</p>
               </div>
               <div className="flex-1">
                 {sys.issues && sys.issues.length > 0 ? (
                   <div className="flex flex-wrap gap-1.5">
                     {sys.issues.map(issue => (
-                      <span key={issue} className="text-xs bg-amber-50 text-amber-700 border border-amber-200 rounded px-2 py-0.5">
+                      <span key={issue} className="text-xs bg-amber-50 dark:bg-amber-950/30 text-amber-700 border border-amber-200 dark:border-amber-800 rounded px-2 py-0.5">
                         {issue}
                       </span>
                     ))}
                   </div>
                 ) : (
-                  <span className="text-xs text-slate-400">No issues detected</span>
+                  <span className="text-xs text-slate-400 dark:text-slate-500">No issues detected</span>
                 )}
               </div>
               <div className="text-right shrink-0">
                 <Badge label={syncStatusLabel[sys.status]} variant={statusVariant(sys.status)} />
-                <p className="text-xs text-slate-400 mt-1">{sys.recordCount.toLocaleString()} records</p>
+                <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">{sys.recordCount.toLocaleString()} records</p>
               </div>
               <div className="text-right shrink-0 w-32">
-                <p className="text-xs text-slate-500">Last sync</p>
-                <p className="text-xs font-medium text-slate-700">
+                <p className="text-xs text-slate-500 dark:text-slate-400">Last sync</p>
+                <p className="text-xs font-medium text-slate-700 dark:text-slate-200">
                   {new Date(sys.lastSync).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
                 </p>
               </div>

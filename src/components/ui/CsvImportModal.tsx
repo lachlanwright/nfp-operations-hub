@@ -88,21 +88,21 @@ export function CsvImportModal<T>({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-xl">
+    <div className="fixed inset-0 bg-black/40 dark:bg-black/60 z-50 flex items-center justify-center p-4">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-xl">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100 dark:border-slate-700">
           <div>
-            <h3 className="text-base font-semibold text-slate-900">{title}</h3>
-            <p className="text-xs text-slate-500 mt-0.5">{description}</p>
+            <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100">{title}</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{description}</p>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600"><X size={18} /></button>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"><X size={18} /></button>
         </div>
 
         <div className="p-6 space-y-5">
           {/* Template download */}
-          <div className="flex items-center justify-between bg-slate-50 rounded-lg px-4 py-3">
-            <div className="flex items-center gap-2 text-sm text-slate-600">
+          <div className="flex items-center justify-between bg-slate-50 dark:bg-slate-700/50 rounded-lg px-4 py-3">
+            <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
               <FileText size={15} className="text-slate-400" />
               Download the CSV template to get started
             </div>
@@ -123,11 +123,11 @@ export function CsvImportModal<T>({
             onDrop={handleDrop}
             onClick={() => fileRef.current?.click()}
             className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors ${
-              dragging ? 'border-blue-400 bg-blue-50' : 'border-slate-200 hover:border-blue-300 hover:bg-slate-50'
+              dragging ? 'border-blue-400 bg-blue-50 dark:bg-blue-950/30' : 'border-slate-200 dark:border-slate-600 hover:border-blue-300 dark:hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-slate-700/30'
             }`}
           >
             <Upload size={24} className={`mx-auto mb-2 ${dragging ? 'text-blue-500' : 'text-slate-400'}`} />
-            <p className="text-sm font-medium text-slate-700">{fileName ?? 'Drop a CSV file here, or click to browse'}</p>
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-200">{fileName ?? 'Drop a CSV file here, or click to browse'}</p>
             <p className="text-xs text-slate-400 mt-1">Accepts .csv files only</p>
             <input ref={fileRef} type="file" accept=".csv" className="hidden" onChange={handleFile} />
           </div>
@@ -136,12 +136,12 @@ export function CsvImportModal<T>({
           {preview && (
             <div className="space-y-3">
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1.5 text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-1.5">
+                <div className="flex items-center gap-1.5 text-sm text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 rounded-lg px-3 py-1.5">
                   <CheckCircle size={14} />
                   <span className="font-medium">{preview.valid.length} rows ready to import</span>
                 </div>
                 {preview.errors.length > 0 && (
-                  <div className="flex items-center gap-1.5 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-1.5">
+                  <div className="flex items-center gap-1.5 text-sm text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950 border border-amber-200 dark:border-amber-800 rounded-lg px-3 py-1.5">
                     <AlertTriangle size={14} />
                     <span className="font-medium">{preview.errors.length} rows skipped</span>
                   </div>
@@ -149,9 +149,9 @@ export function CsvImportModal<T>({
               </div>
 
               {preview.errors.length > 0 && (
-                <div className="bg-amber-50 rounded-lg border border-amber-200 p-3 max-h-28 overflow-y-auto">
+                <div className="bg-amber-50 dark:bg-amber-950/50 rounded-lg border border-amber-200 dark:border-amber-800 p-3 max-h-28 overflow-y-auto">
                   {preview.errors.map(e => (
-                    <p key={e.row} className="text-xs text-amber-700">Row {e.row}: {e.message}</p>
+                    <p key={e.row} className="text-xs text-amber-700 dark:text-amber-400">Row {e.row}: {e.message}</p>
                   ))}
                 </div>
               )}
@@ -160,7 +160,7 @@ export function CsvImportModal<T>({
         </div>
 
         {/* Footer */}
-        <div className="flex justify-end gap-2 px-6 py-4 border-t border-slate-100">
+        <div className="flex justify-end gap-2 px-6 py-4 border-t border-slate-100 dark:border-slate-700">
           <Button variant="secondary" size="md" onClick={onClose}>Cancel</Button>
           <Button
             variant="primary"
